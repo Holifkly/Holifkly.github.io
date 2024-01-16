@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holifkly</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        button {
+            padding: 20px;
+            margin: 15px;
+            font-size: 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Do you want to download BlueStacks?</h1>
+
+<button id="button1">Yes, Download BlueStacks</button>
+<button id="button2">No, I don't need them</button>
+
+<script>
+    document.getElementById('button1').addEventListener('click', function() {
+        createFile('bluestacks-yes', 'yes');
+    });
+
+    document.getElementById('button2').addEventListener('click', function() {
+        createFile('bluestacks-no', 'no');
+    });
+
+    function createFile(fileName, content) {
+        const blob = new Blob([content], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = fileName;
+        a.click();
+    }
+</script>
+
+</body>
+</html>
