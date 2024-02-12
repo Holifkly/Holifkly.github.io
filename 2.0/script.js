@@ -7,7 +7,7 @@ modeToggle.addEventListener('click', function() {
   modeToggle.textContent = currentMode;
 });
 
-// Check local storage for mode preference
+// Check local storage for mode preference (this was kinda hard)
 const savedMode = localStorage.getItem('mode');
 if (savedMode === 'dark') {
   body.classList.add('dark-mode');
